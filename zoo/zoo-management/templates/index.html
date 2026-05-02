@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Zoo Management System</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>🦁 Smart Zoo Management System</h1>
+    <nav>
+      <button onclick="showTab('animals')">Animals</button>
+      <button onclick="showTab('species')">Species</button>
+      <button onclick="showTab('staff')">Staff</button>
+      <button onclick="showTab('feeding')">Feeding</button>
+      <button onclick="showTab('medical')">Medical</button>
+      <button onclick="showTab('alerts')">Alerts</button>
+      <button onclick="showTab('reports')">Reports</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── ANIMALS ── -->
+    <section id="tab-animals" class="tab">
+      <h2>Animals</h2>
+      <form id="form-animal">
+        <input type="text"   id="a-name"        placeholder="Name"        required />
+        <input type="number" id="a-age"          placeholder="Age"         required />
+        <select id="a-species"></select>
+        <select id="a-enclosure"></select>
+        <button type="submit">Add Animal</button>
+      </form>
+      <table id="tbl-animals"></table>
+    </section>
+
+    <!-- ── SPECIES ── -->
+    <section id="tab-species" class="tab hidden">
+      <h2>Species</h2>
+      <form id="form-species">
+        <input type="text" id="s-name" placeholder="Species Name" required />
+        <select id="s-diet">
+          <option value="Carnivore">Carnivore</option>
+          <option value="Herbivore">Herbivore</option>
+          <option value="Omnivore">Omnivore</option>
+        </select>
+        <button type="submit">Add Species</button>
+      </form>
+      <table id="tbl-species"></table>
+    </section>
+
+    <!-- ── STAFF ── -->
+    <section id="tab-staff" class="tab hidden">
+      <h2>Staff</h2>
+      <form id="form-staff">
+        <input type="text"   id="st-name"   placeholder="Name"   required />
+        <input type="text"   id="st-role"   placeholder="Role"   required />
+        <input type="number" id="st-salary" placeholder="Salary" required />
+        <button type="submit">Add Staff</button>
+      </form>
+      <h3>Staff List</h3>
+      <table id="tbl-staff"></table>
+      <h3>Staff ↔ Enclosure Assignments</h3>
+      <table id="tbl-staff-enc"></table>
+    </section>
+
+    <!-- ── FEEDING ── -->
+    <section id="tab-feeding" class="tab hidden">
+      <h2>Feeding Schedule</h2>
+      <form id="form-feeding">
+        <select id="f-animal"></select>
+        <input type="text" id="f-food" placeholder="Food Type" required />
+        <input type="time" id="f-time" required />
+        <button type="submit">Add Feeding</button>
+      </form>
+      <table id="tbl-feeding"></table>
+    </section>
+
+    <!-- ── MEDICAL ── -->
+    <section id="tab-medical" class="tab hidden">
+      <h2>Medical Records</h2>
+      <form id="form-medical">
+        <select id="m-animal"></select>
+        <input type="text" id="m-diag"  placeholder="Diagnosis" required />
+        <input type="text" id="m-treat" placeholder="Treatment" required />
+        <button type="submit">Add Record</button>
+      </form>
+      <table id="tbl-medical"></table>
+    </section>
+
+    <!-- ── ALERTS ── -->
+    <section id="tab-alerts" class="tab hidden">
+      <h2>Alerts</h2>
+      <form id="form-alert">
+        <select id="al-animal"></select>
+        <select id="al-type">
+          <option value="Medical Emergency">Medical Emergency</option>
+          <option value="Feeding Reminder">Feeding Reminder</option>
+          <option value="Animal Transfer">Animal Transfer</option>
+        </select>
+        <input type="date" id="al-date" required />
+        <button type="submit">Add Alert</button>
+      </form>
+      <table id="tbl-alerts"></table>
+    </section>
+
+    <!-- ── REPORTS ── -->
+    <section id="tab-reports" class="tab hidden">
+      <h2>Reports</h2>
+      <div class="report-cards">
+        <div class="card">
+          <h3>Animals per Species</h3>
+          <p class="hint">Uses GROUP BY</p>
+          <table id="tbl-report-species"></table>
+        </div>
+        <div class="card">
+          <h3>Animals Sorted by Age</h3>
+          <p class="hint">Uses ORDER BY ASC</p>
+          <table id="tbl-report-age"></table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast"></div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
